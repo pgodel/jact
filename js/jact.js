@@ -1,5 +1,9 @@
 // method to extend classes, taken from prototype
-Object.extend = function(destination, source) {
+
+var jAct = {};
+
+
+jAct.extend = function(destination, source) {
     for (var property in source) {
         destination[property] = source[property];
     }
@@ -8,11 +12,11 @@ Object.extend = function(destination, source) {
 
 
 // base class
-var ActiveResourceJ = {
+jAct.ActiveResourceJ = {
     version: '0.1',
     url: '',
     getUrl: function() {
-        return ( this.url ? this.url :  ActiveResource.url ) + this.resource + ".json";
+        return ( this.url ? this.url :  jAct.ActiveResource.url ) + this.resource + ".json";
     }
     ,
     findAll: function(callback) {
@@ -62,11 +66,11 @@ var ActiveResourceJ = {
 }
 
 
-var ActiveResource = function() {
+jAct.ActiveResource = function() {
     this.version = '0.1';
     this.url = '';
     this.getUrl = function() {
-        return ( this.url ? this.url :  ActiveResource.url ) + this.resource + ".json";
+        return ( this.url ? this.url :  jAct.ActiveResource.url ) + this.resource + ".json";
     };
 
     this.findAll = function(callback) {

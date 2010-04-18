@@ -22,8 +22,10 @@
 
             var User = new BaseUser();
 
+
             // extend ActiveResource into User
-            Object.extend( User, ActiveResourceJ );
+            jAct.extend( User, jAct.ActiveResourceJ );
+
 
             User.findAll = function(callback) {
                 if (!this.resource)
@@ -32,10 +34,11 @@
                     return null;
                 }
 
+
                 $.getJSON( this.getUrl(), function(data) {
-                    var d = new Array();
+                    var d = [];
                     for (var i = 0; i < data.length; i++){
-                        d[i] = Object.extend(new BaseUser(), data[i]);
+                        d[i] = jAct.extend(new BaseUser(), data[i]);
                     }
                     callback(d);
                 });
@@ -44,7 +47,7 @@
 
 
             // define URL
-            ActiveResource.url = "server.php/";
+            jAct.ActiveResource.url = "server.php/";
 
             // callback function that will receive the users
             function getUsers(users){
